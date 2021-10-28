@@ -4,16 +4,40 @@
 # plot cluster-level datapoints for each variable #
 plot_basic_distribution_variables_func <- function(admin_processed, clustered_data, variable_interest){
   
-  if(variable_interest == "pg_h"){
+  variable_interest_tocheck <- variable_interest
+  
+  if(variable_interest_tocheck == "pg_h"){
     variable_interest = clustered_data$Pg_h
     legend_nm = c("proportion of HH with pigs by cluster")
   }
   
-  if(variable_interest == "pg_2"){
-    variable_interest = clustered_data$Pg_h
+  if(variable_interest_tocheck == "pg_2"){
+    variable_interest = clustered_data$Pg_2
     legend_nm = c("proportion of free-roaming systems")
   }
   
+  if(variable_interest_tocheck == "wc2"){
+    variable_interest = clustered_data$wc2
+    legend_nm = c("proportion of HH w/ low sanitation")
+  }
+  
+  if(variable_interest_tocheck == "wc1"){
+    variable_interest = clustered_data$wc1
+    legend_nm = c("proportion of HH w/ low sanitation 
+(inclduing uncovered)")
+  }
+  
+  if(variable_interest_tocheck == "w1"){
+    variable_interest = clustered_data$w1
+    legend_nm = c("proportion of HH in lowest 
+socio-economic quintile")
+  }
+  
+  if(variable_interest_tocheck == "w1&w2"){
+    variable_interest = c(clustered_data$w1 + clustered_data$w2)
+    legend_nm = c("proportion of HH in lowest two
+socio-economic quintile") # percentage of poor in the 40% percent poorest category (poorest and poor) i.e. w1 and w2
+  }
   
   visualise_cluster_data <- 
     ggplot() + 

@@ -117,7 +117,6 @@ free_range_pigs_cluster_plot
 spatial_pigroam <- process_plot_variogram_func(shp = shp_2011, 
                                              clustered_data = My_cluter_data_2011, 
                                              variable_interest = "pg_2")
-
 plot(spatial_pigroam[[4]]) # plot model fit to variogram data
 
 
@@ -125,10 +124,118 @@ plot(spatial_pigroam[[4]]) # plot model fit to variogram data
 kriged_pigroam <- kriging_func(spatial_object = spatial_pigroam, 
                              admin = admin_2011_processed, 
                              variable_interest = "pg_2")
-
 kriged_pigroam[[2]] # plot predicted variable across map
 
 # D)
 pig_roam_processed <- spatially_process_variable_function(kriged = kriged_pigroam[[1]]) # final object: process - gridded object + rasterize
+
+#======================================================================#
+#  Sanitation - percentage of household with low sanitation facilities #
+#  The first map includes household who have no facilities at all      #
+
+# A)
+sanitation_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
+                                                                       clustered_data = My_cluter_data_2011, 
+                                                                       variable_interest = "wc2")
+sanitation_cluster_plot
+
+# B)
+spatial_sanitation <- process_plot_variogram_func(shp = shp_2011, 
+                                               clustered_data = My_cluter_data_2011, 
+                                               variable_interest = "wc2")
+plot(spatial_sanitation[[4]]) # plot model fit to variogram data
+
+
+# C)
+kriged_sanitation <- kriging_func(spatial_object = spatial_sanitation, 
+                               admin = admin_2011_processed, 
+                               variable_interest = "wc2")
+kriged_sanitation[[2]] # plot predicted variable across map
+
+# D)
+sanitation_processed <- spatially_process_variable_function(kriged = kriged_sanitation[[1]]) # final object: process - gridded object + rasterize
+
+#======================================================================#
+#  Sanitation - percentage of household with low sanitation facilities #
+#  includes no sanitation or uncovered facilities                      #
+
+# A)
+sanitation2_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
+                                                                  clustered_data = My_cluter_data_2011, 
+                                                                  variable_interest = "wc1")
+sanitation2_cluster_plot
+
+# B)
+spatial_sanitation2 <- process_plot_variogram_func(shp = shp_2011, 
+                                                  clustered_data = My_cluter_data_2011, 
+                                                  variable_interest = "wc1")
+plot(spatial_sanitation2[[4]]) # plot model fit to variogram data
+
+
+# C)
+kriged_sanitation2 <- kriging_func(spatial_object = spatial_sanitation2, 
+                                  admin = admin_2011_processed, 
+                                  variable_interest = "wc1")
+kriged_sanitation2[[2]] # plot predicted variable across map
+
+# D)
+sanitation2_processed <- spatially_process_variable_function(kriged = kriged_sanitation2[[1]]) # final object: process - gridded object + rasterize
+
+#=================================================================================##
+##         poverty level                                                          ##
+##  based on percentage of household in the poorest 20% (lowest socio-econ quintile)
+
+# A)
+poverty_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
+                                                                   clustered_data = My_cluter_data_2011, 
+                                                                   variable_interest = "w1")
+poverty_cluster_plot
+
+# B)
+spatial_poverty <- process_plot_variogram_func(shp = shp_2011, 
+                                                   clustered_data = My_cluter_data_2011, 
+                                                   variable_interest = "w1")
+plot(spatial_poverty[[4]]) # plot model fit to variogram data
+
+
+# C)
+kriged_poverty <- kriging_func(spatial_object = spatial_poverty, 
+                                   admin = admin_2011_processed, 
+                                   variable_interest = "w1")
+kriged_poverty[[2]] # plot predicted variable across map
+
+# D)
+poverty_processed <- spatially_process_variable_function(kriged = kriged_poverty[[1]]) # final object: process - gridded object + rasterize
+
+
+#=================================================================================##
+##         poverty level                                                          ##
+##  based on percentage of household in bottom two socio-economic quintiles       ##
+
+# A)
+poverty2_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
+                                                               clustered_data = My_cluter_data_2011, 
+                                                               variable_interest = "w1&w2")
+poverty2_cluster_plot
+
+# B)
+spatial_poverty2 <- process_plot_variogram_func(shp = shp_2011, 
+                                               clustered_data = My_cluter_data_2011, 
+                                               variable_interest = "w1&w2")
+plot(spatial_poverty2[[4]]) # plot model fit to variogram data
+
+
+# C)
+kriged_poverty2 <- kriging_func(spatial_object = spatial_poverty2, 
+                               admin = admin_2011_processed, 
+                               variable_interest = "w1&w2")
+kriged_poverty2[[2]] # plot predicted variable across map
+
+# D)
+poverty2_processed <- spatially_process_variable_function(kriged = kriged_poverty2[[1]]) # final object: process - gridded object + rasterize
+
+
+
+
 
 

@@ -14,15 +14,38 @@ process_plot_variogram_func <- function(shp, clustered_data, variable_interest) 
   
   coordinates(geodata) <- ~x + y # make spatial object with lat and long from dataset with livestock data
   
-  if(variable_interest == "pg_h"){
-    variable_interest = geodata$Pg_h
-  }
+variable_interest_tocheck <- variable_interest
+    
+    if(variable_interest_tocheck == "pg_h"){
+      variable_interest = geodata$Pg_h
+      }
+    
+    if(variable_interest_tocheck == "pg_2"){
+      variable_interest = geodata$Pg_2
+      }
+    
+    if(variable_interest_tocheck == "wc2"){
+      variable_interest = geodata$wc2
+      }
+    
+    if(variable_interest_tocheck == "wc1"){
+      variable_interest = geodata$wc1
+      }
+    
+    if(variable_interest_tocheck == "w1"){
+      variable_interest = geodata$w1
+    }
   
-  if(variable_interest == "pg_2"){
-    variable_interest = geodata$Pg_2
-  }
+  if("pg_h" %in% variable_interest_tocheck || "pg_2" %in% variable_interest_tocheck || 
+     "wc2" %in% variable_interest_tocheck || "wc1" %in% variable_interest_tocheck || "w1" %in% variable_interest_tocheck) {
+    vgm = variogram(variable_interest ~ 1, geodata) # make a variogram (plotting spatial autocorrelation: https://stats.idre.ucla.edu/r/faq/how-do-i-generate-a-variogram-for-spatial-data-in-r/) of housholds with pigs
+    }
   
-  vgm = variogram(variable_interest ~ 1, geodata) # make a variogram (plotting spatial autocorrelation: https://stats.idre.ucla.edu/r/faq/how-do-i-generate-a-variogram-for-spatial-data-in-r/) of housholds with pigs
+  if(variable_interest_tocheck == "w1&w2"){
+    vgm = variogram((geodata$w1 = geodata$w2) ~ 1, geodata) # make a variogram (plotting spatial autocorrelation: https://stats.idre.ucla.edu/r/faq/how-do-i-generate-a-variogram-for-spatial-data-in-r/) of housholds with pigs
+    }
+  
+  #vgm = variogram(variable_interest ~ 1, geodata) # make a variogram (plotting spatial autocorrelation: https://stats.idre.ucla.edu/r/faq/how-do-i-generate-a-variogram-for-spatial-data-in-r/) of housholds with pigs
   
   fit = fit.variogram(vgm, model = vgm(0.03, "Sph", 2, 0.01)) # model fit variogram fit (?: https://r-spatial.org/r/2016/02/14/gstat-variogram-fitting.html)
   
@@ -42,12 +65,39 @@ kriging_func <- function(spatial_object, admin, variable_interest) {
   grid = spatial_object[[2]] 
   fit = spatial_object[[3]]
   
-  if(variable_interest == "pg_h"){
+  variable_interest_tocheck <- variable_interest
+  
+  if(variable_interest_tocheck == "pg_h"){
     variable_interest = geodata$Pg_h
+    legend_nm = c("proportion of HH with pigs by cluster")
   }
   
-  if(variable_interest == "pg_2"){
+  if(variable_interest_tocheck == "pg_2"){
     variable_interest = geodata$Pg_2
+    legend_nm = c("proportion of free-roaming systems")
+  }
+  
+  if(variable_interest_tocheck == "wc2"){
+    variable_interest = geodata$wc2
+    legend_nm = c("proportion of HH w/ low sanitation")
+  }
+  
+  if(variable_interest_tocheck == "wc1"){
+    variable_interest = geodata$wc1
+    legend_nm = c("proportion of HH w/ low sanitation 
+(inclduing uncovered)")
+  }
+  
+  if(variable_interest_tocheck == "w1"){
+    variable_interest = geodata$w1
+    legend_nm = c("proportion of HH in lowest 
+socio-economic quintile")
+  }
+  
+  if(variable_interest_tocheck == "w1&w2"){
+    variable_interest = c(geodata$w1 + geodata$w2)
+    legend_nm = c("proportion of HH in lowest two
+socio-economic quintile") # percentage of poor in the 40% percent poorest category (poorest and poor) i.e. w1 and w2
   }
   
   kriged = krige(variable_interest ~ 1, geodata, grid, model = fit) # kriging = estimating avg. variable of interest 
@@ -59,7 +109,7 @@ kriging_func <- function(spatial_object, admin, variable_interest) {
     ggplot(data = kriged@data, aes(x = kriged$x1, y = kriged$x2)) +
     geom_tile(aes(fill = kriged$var1.pred)) +
     coord_equal() +
-    scale_fill_gradient(low = "yellow", high = "red") +
+    scale_fill_gradient(name = legend_nm, low = "yellow", high = "red") +
     geom_polygon(data = admin, aes(x = long, y = lat, group = group), color = "black", alpha = 0) +
     theme_bw()
   
