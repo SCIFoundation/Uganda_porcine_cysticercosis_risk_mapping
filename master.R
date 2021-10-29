@@ -45,7 +45,6 @@ shp_2011_processed <- processing_subnational_shp_func(shp = shp_2011) # process 
 # 3. a couple of household charateristics
 My_cluter_data_2011 <- DHS2011_extraction_tocluster_func(data = DHS_2011_data, geo = geo_2011)
 
-
 #==========================================================================#
 #========  Spatial (spatial autocorrelation & kriging analysis ============#
 
@@ -112,20 +111,16 @@ free_range_pigs_cluster_plot <- plot_basic_distribution_variables_func(admin_pro
                                                                clustered_data = My_cluter_data_2011, 
                                                                variable_interest = "pg_2")
 free_range_pigs_cluster_plot
-
 # B)
 spatial_pigroam <- process_plot_variogram_func(shp = shp_2011, 
                                              clustered_data = My_cluter_data_2011, 
                                              variable_interest = "pg_2")
 plot(spatial_pigroam[[4]]) # plot model fit to variogram data
-
-
 # C)
 kriged_pigroam <- kriging_func(spatial_object = spatial_pigroam, 
                              admin = admin_2011_processed, 
                              variable_interest = "pg_2")
 kriged_pigroam[[2]] # plot predicted variable across map
-
 # D)
 pig_roam_processed <- spatially_process_variable_function(kriged = kriged_pigroam[[1]]) # final object: process - gridded object + rasterize
 
@@ -138,20 +133,16 @@ sanitation_cluster_plot <- plot_basic_distribution_variables_func(admin_processe
                                                                        clustered_data = My_cluter_data_2011, 
                                                                        variable_interest = "wc2")
 sanitation_cluster_plot
-
 # B)
 spatial_sanitation <- process_plot_variogram_func(shp = shp_2011, 
                                                clustered_data = My_cluter_data_2011, 
                                                variable_interest = "wc2")
 plot(spatial_sanitation[[4]]) # plot model fit to variogram data
-
-
 # C)
 kriged_sanitation <- kriging_func(spatial_object = spatial_sanitation, 
                                admin = admin_2011_processed, 
                                variable_interest = "wc2")
 kriged_sanitation[[2]] # plot predicted variable across map
-
 # D)
 sanitation_processed <- spatially_process_variable_function(kriged = kriged_sanitation[[1]]) # final object: process - gridded object + rasterize
 
@@ -164,20 +155,16 @@ sanitation2_cluster_plot <- plot_basic_distribution_variables_func(admin_process
                                                                   clustered_data = My_cluter_data_2011, 
                                                                   variable_interest = "wc1")
 sanitation2_cluster_plot
-
 # B)
 spatial_sanitation2 <- process_plot_variogram_func(shp = shp_2011, 
                                                   clustered_data = My_cluter_data_2011, 
                                                   variable_interest = "wc1")
 plot(spatial_sanitation2[[4]]) # plot model fit to variogram data
-
-
 # C)
 kriged_sanitation2 <- kriging_func(spatial_object = spatial_sanitation2, 
                                   admin = admin_2011_processed, 
                                   variable_interest = "wc1")
 kriged_sanitation2[[2]] # plot predicted variable across map
-
 # D)
 sanitation2_processed <- spatially_process_variable_function(kriged = kriged_sanitation2[[1]]) # final object: process - gridded object + rasterize
 
@@ -190,20 +177,16 @@ poverty_cluster_plot <- plot_basic_distribution_variables_func(admin_processed =
                                                                    clustered_data = My_cluter_data_2011, 
                                                                    variable_interest = "w1")
 poverty_cluster_plot
-
 # B)
 spatial_poverty <- process_plot_variogram_func(shp = shp_2011, 
                                                    clustered_data = My_cluter_data_2011, 
                                                    variable_interest = "w1")
 plot(spatial_poverty[[4]]) # plot model fit to variogram data
-
-
 # C)
 kriged_poverty <- kriging_func(spatial_object = spatial_poverty, 
                                    admin = admin_2011_processed, 
                                    variable_interest = "w1")
 kriged_poverty[[2]] # plot predicted variable across map
-
 # D)
 poverty_processed <- spatially_process_variable_function(kriged = kriged_poverty[[1]]) # final object: process - gridded object + rasterize
 
@@ -217,25 +200,32 @@ poverty2_cluster_plot <- plot_basic_distribution_variables_func(admin_processed 
                                                                clustered_data = My_cluter_data_2011, 
                                                                variable_interest = "w1&w2")
 poverty2_cluster_plot
-
 # B)
 spatial_poverty2 <- process_plot_variogram_func(shp = shp_2011, 
                                                clustered_data = My_cluter_data_2011, 
                                                variable_interest = "w1&w2")
 plot(spatial_poverty2[[4]]) # plot model fit to variogram data
-
-
 # C)
 kriged_poverty2 <- kriging_func(spatial_object = spatial_poverty2, 
                                admin = admin_2011_processed, 
                                variable_interest = "w1&w2")
 kriged_poverty2[[2]] # plot predicted variable across map
-
 # D)
 poverty2_processed <- spatially_process_variable_function(kriged = kriged_poverty2[[1]]) # final object: process - gridded object + rasterize
 
 
+#===================================================================================================#
+# Investigating the distribution of the key variables to define meaningful breaks into high and low #
 
+# 1) livestock ownership distribution
+# for the final map we are using the 3rd quantile, i.e. the map shows were the 25% clusters with most households with pigs are. 
+
+livestock_ownership <- distribution_variables_definecutoff_func(spatial_variable = pig_pop_density[[3]],
+                                                                cutoff_value = 0.23)
+
+plot(livestock_ownership[[1]])
+livestock_ownership[[2]]
+plot(livestock_ownership[[3]])
 
 
 

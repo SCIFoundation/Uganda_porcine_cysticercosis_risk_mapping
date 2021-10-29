@@ -190,7 +190,7 @@ compute_pig_denisty_func <- function(pop, kriged, shp, idw) {
   
   Pg_den_co[Pg_den_co > 100] <- NA # % over 100 is NA?
   
-  return(list(Pg_den, Pg_den_co))
+  return(list(Pg_den, Pg_den_co, Pg_h_r))
 
 }
 
