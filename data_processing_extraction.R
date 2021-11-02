@@ -117,18 +117,33 @@ DHS2011_extraction_tocluster_func <- function(data, geo) {
 distribution_variables_definecutoff_func <- function(spatial_variable, cutoff_value){
   
   histogram <- hist(spatial_variable@data@values) # histogram of HH with pigs
+  
+  dist_summary <- summary(spatial_variable@data@values)
+  
+  spatial_variable_cutoff <- spatial_variable
+  
+  spatial_variable_cutoff[spatial_variable > cutoff_value] <- 1 #values over 23% = 1
+  
+  spatial_variable_cutoff[spatial_variable_cutoff < cutoff_value] <- 0 # values less than 23% = 0
+  
+  #dist_plot <- plot(spatial_variable_cutoff)
+  
+  #dist_plot_admin <- dist_plot + plot(admin,add=T)
 
-dist_summary <- summary(spatial_variable@data@values)
-
-spatial_variable_cutoff <- spatial_variable
-
-spatial_variable_cutoff[spatial_variable > cutoff_value] <- 1 #values over 23% = 1
-
-spatial_variable_cutoff[spatial_variable_cutoff < cutoff_value] <- 0 # values less than 23% = 0
-
-#dist_plot <- plot(spatial_variable_cutoff)
-
-return(list(histogram, dist_summary, spatial_variable_cutoff, dist_plot))
+return(list(histogram, dist_summary, spatial_variable_cutoff))
 
 }
 
+
+# same as function above but not assessing histrogram/distribution for FAO Robinson pig pop layer (as this does not work)
+distribution_variables_definecutoff_func2 <- function(spatial_variable, cutoff_value){
+  
+  spatial_variable_cutoff <- spatial_variable
+  
+  spatial_variable_cutoff[spatial_variable > cutoff_value] <- 1 #values over 23% = 1
+  
+  spatial_variable_cutoff[spatial_variable_cutoff < cutoff_value] <- 0 # values less than 23% = 0
+
+  return(list(spatial_variable_cutoff))
+  
+}

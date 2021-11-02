@@ -190,7 +190,6 @@ kriged_poverty[[2]] # plot predicted variable across map
 # D)
 poverty_processed <- spatially_process_variable_function(kriged = kriged_poverty[[1]]) # final object: process - gridded object + rasterize
 
-
 #=================================================================================##
 ##         poverty level                                                          ##
 ##  based on percentage of household in bottom two socio-economic quintiles       ##
@@ -213,19 +212,57 @@ kriged_poverty2[[2]] # plot predicted variable across map
 # D)
 poverty2_processed <- spatially_process_variable_function(kriged = kriged_poverty2[[1]]) # final object: process - gridded object + rasterize
 
-
 #===================================================================================================#
 # Investigating the distribution of the key variables to define meaningful breaks into high and low #
 
 # 1) livestock ownership distribution
-# for the final map we are using the 3rd quantile, i.e. the map shows were the 25% clusters with most households with pigs are. 
-
+# for the final map we are using the 3rd quantile, 
+# i.e. the map shows were the 25% clusters with most households with pigs are. 
 livestock_ownership <- distribution_variables_definecutoff_func(spatial_variable = pig_pop_density[[3]],
                                                                 cutoff_value = 0.23)
+plot(livestock_ownership[[1]]) # histogram
+livestock_ownership[[2]] # distribution properties
+plot(livestock_ownership[[3]]) # plot high vs low
 
-plot(livestock_ownership[[1]])
-livestock_ownership[[2]]
-plot(livestock_ownership[[3]])
+# 2) pig population 
+# based on DHS computation
+pig_populationDHS <- distribution_variables_definecutoff_func(spatial_variable = pig_pop_density[[1]],
+                                                                cutoff_value = 1)
+plot(pig_populationDHS[[1]])
+pig_populationDHS[[2]]
+plot(pig_populationDHS[[3]])
 
+# 3) based on FAO Robinson layer (cannot view historgram etc so use diff function)
+pig_populationFAO <- distribution_variables_definecutoff_func2(spatial_variable = pig_pop,
+                                                              cutoff_value = 1)
+plot(pig_populationFAO[[1]]) # cannot review histogram & summarise distribution
+
+# 4) pig extensive rural system 
+pig_roam <- distribution_variables_definecutoff_func(spatial_variable = pig_roam_processed,
+                                                              cutoff_value = 0.153) # cut-off indicated as 0.153 value (not 3rd quartile)
+plot(pig_roam[[1]])
+pig_roam[[2]]
+plot(pig_roam[[3]])
+
+# 5) poverty the 40% poorest
+poverty_lowest40 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed,
+                                                     cutoff_value = 0.666333) # 3rd quartile cut-off value (0.666 in original)
+plot(poverty_lowest40[[1]])
+poverty_lowest40[[2]]
+plot(poverty_lowest40[[3]])
+
+# 6) poverty the 20% poorest
+poverty_lowest20 <- distribution_variables_definecutoff_func(spatial_variable = poverty_processed,
+                                                             cutoff_value = 0.43828) # 3rd quartile cut-off value (0.438 used in original)
+plot(poverty_lowest20[[1]])
+poverty_lowest20[[2]]
+plot(poverty_lowest20[[3]])
+
+# 7) uncovered sanitation
+sanitation <- distribution_variables_definecutoff_func(spatial_variable = sanitation2_processed,
+                                                             cutoff_value = 0.40869) # 3rd quartile cut-off value (0.408 used in original)
+plot(sanitation[[1]])
+sanitation[[2]]
+plot(sanitation[[3]])
 
 

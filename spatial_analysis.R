@@ -35,7 +35,8 @@ variable_interest_tocheck <- variable_interest
     if(variable_interest_tocheck == "w1"){
       variable_interest = geodata$w1
     }
-  
+
+# assess spatial autocorrelation (with variogram)
   if("pg_h" %in% variable_interest_tocheck || "pg_2" %in% variable_interest_tocheck || 
      "wc2" %in% variable_interest_tocheck || "wc1" %in% variable_interest_tocheck || "w1" %in% variable_interest_tocheck) {
     vgm = variogram(variable_interest ~ 1, geodata) # make a variogram (plotting spatial autocorrelation: https://stats.idre.ucla.edu/r/faq/how-do-i-generate-a-variogram-for-spatial-data-in-r/) of housholds with pigs
@@ -45,10 +46,17 @@ variable_interest_tocheck <- variable_interest
     vgm = variogram((geodata$w1 = geodata$w2) ~ 1, geodata) # make a variogram (plotting spatial autocorrelation: https://stats.idre.ucla.edu/r/faq/how-do-i-generate-a-variogram-for-spatial-data-in-r/) of housholds with pigs
     }
   
-  #vgm = variogram(variable_interest ~ 1, geodata) # make a variogram (plotting spatial autocorrelation: https://stats.idre.ucla.edu/r/faq/how-do-i-generate-a-variogram-for-spatial-data-in-r/) of housholds with pigs
-  
+# fit model to variogram
+if("pg_h" %in% variable_interest_tocheck || "pg_2" %in% variable_interest_tocheck || 
+   "wc2" %in% variable_interest_tocheck || "wc1" %in% variable_interest_tocheck || "w1&w2" %in% variable_interest_tocheck) {
   fit = fit.variogram(vgm, model = vgm(0.03, "Sph", 2, 0.01)) # model fit variogram fit (?: https://r-spatial.org/r/2016/02/14/gstat-variogram-fitting.html)
-  
+  }
+
+if(variable_interest_tocheck == "w1"){
+  fit = fit.variogram(vgm, model = vgm(0.03, "Wav", 2, 0.01)) # model fit variogram fit (?: https://r-spatial.org/r/2016/02/14/gstat-variogram-fitting.html)
+  }
+
+# plot model fit to variogram
   vmg <- plot(vgm, fit) # plot a semi-variogram (spatial autocorr) data vs. model fit (line)
   
   return(list(geodata, grid, fit, vmg))
