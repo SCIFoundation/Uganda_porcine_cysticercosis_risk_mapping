@@ -223,6 +223,7 @@ livestock_ownership <- distribution_variables_definecutoff_func(spatial_variable
 plot(livestock_ownership[[1]]) # histogram
 livestock_ownership[[2]] # distribution properties
 plot(livestock_ownership[[3]]) # plot high vs low
+plot(admin_2011_processed,add = T)
 
 # 2) pig population 
 # based on DHS computation
@@ -231,11 +232,13 @@ pig_populationDHS <- distribution_variables_definecutoff_func(spatial_variable =
 plot(pig_populationDHS[[1]])
 pig_populationDHS[[2]]
 plot(pig_populationDHS[[3]])
+plot(admin_2011_processed,add = T)
 
 # 3) based on FAO Robinson layer (cannot view historgram etc so use diff function)
 pig_populationFAO <- distribution_variables_definecutoff_func2(spatial_variable = pig_pop,
                                                               cutoff_value = 1)
 plot(pig_populationFAO[[1]]) # cannot review histogram & summarise distribution
+plot(admin_2011_processed,add = T)
 
 # 4) pig extensive rural system 
 pig_roam <- distribution_variables_definecutoff_func(spatial_variable = pig_roam_processed,
@@ -243,6 +246,7 @@ pig_roam <- distribution_variables_definecutoff_func(spatial_variable = pig_roam
 plot(pig_roam[[1]])
 pig_roam[[2]]
 plot(pig_roam[[3]])
+plot(admin_2011_processed,add = T)
 
 # 5) poverty the 40% poorest
 poverty_lowest40 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed,
@@ -250,6 +254,7 @@ poverty_lowest40 <- distribution_variables_definecutoff_func(spatial_variable = 
 plot(poverty_lowest40[[1]])
 poverty_lowest40[[2]]
 plot(poverty_lowest40[[3]])
+plot(admin_2011_processed,add = T)
 
 # 6) poverty the 20% poorest
 poverty_lowest20 <- distribution_variables_definecutoff_func(spatial_variable = poverty_processed,
@@ -257,6 +262,7 @@ poverty_lowest20 <- distribution_variables_definecutoff_func(spatial_variable = 
 plot(poverty_lowest20[[1]])
 poverty_lowest20[[2]]
 plot(poverty_lowest20[[3]])
+plot(admin_2011_processed,add = T)
 
 # 7) uncovered sanitation
 sanitation <- distribution_variables_definecutoff_func(spatial_variable = sanitation2_processed,
@@ -264,5 +270,18 @@ sanitation <- distribution_variables_definecutoff_func(spatial_variable = sanita
 plot(sanitation[[1]])
 sanitation[[2]]
 plot(sanitation[[3]])
+plot(admin_2011_processed,add = T)
 
+#===================================================================================================#
+#                            Overlays of risk factors                                               #
 
+# Combined risk factor scoring system (risk factor 1 + (risk factor 2 * 1.1) + risk factor 3 * 1.01)):
+# 1. 0 = ABC low ; 2. 1 = A high (yellow); 3. 1.01 = B high (blue); 4. 1.1 = C high (red); 5. 2.01= AB high (green);
+# 6. 2.1 = AC high (orange); 7. 2.11= BC high (purple); 8. 3.11= ABC high (brown)
+
+# 1) proportion of households with bad sanitation, proportion of extensive households and poverty 
+
+overlay1 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_roam[[3]], risk_factor3 = poverty_lowest40[[3]],
+                       admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
+
+overlay1[[2]]
