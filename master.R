@@ -275,13 +275,38 @@ plot(admin_2011_processed,add = T)
 #===================================================================================================#
 #                            Overlays of risk factors                                               #
 
-# Combined risk factor scoring system (risk factor 1 + (risk factor 2 * 1.1) + risk factor 3 * 1.01)):
-# 1. 0 = ABC low ; 2. 1 = A high (yellow); 3. 1.01 = B high (blue); 4. 1.1 = C high (red); 5. 2.01= AB high (green);
-# 6. 2.1 = AC high (orange); 7. 2.11= BC high (purple); 8. 3.11= ABC high (brown)
+# Combined risk factor scoring system (risk factor 1 + (risk factor 2 * 1.01)+ (risk factor 1 * 1.1)) :
+# 1. 0 = ABC low
+# 2. 1 = A high (yellow)
+# 3. 1.01 = B high (blue)
+# 4. 1.1 = C high (red)
+# 5. 2.01 = AB high (green)
+# 6. 2.1 = AC high (orange)
+# 7. 2.11 = BC high (purple)
+# 8. 3.11 = ABC high (brown)
 
 # 1) proportion of households with bad sanitation, proportion of extensive households and poverty 
-
-overlay1 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_roam[[3]], risk_factor3 = poverty_lowest40[[3]],
+overlay1 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor3 = poverty_lowest40[[3]], risk_factor2 = pig_roam[[3]],
                        admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
+overlay1[[2]] # ggplot map with discrete risk factors
 
-overlay1[[2]]
+# 2) proportion of household with bad sanitaiton (1), pig distribution (Robinson; 1.01) & proportion of extensive households (1.1)  
+overlay2 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_populationFAO[[1]], risk_factor3 = pig_roam[[3]],
+                                   admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
+overlay2[[2]]
+
+# 3) proportion of household with bad sanitaiton (1),poorest 20% (1.01) and proportion of extensive households (1.1) 
+overlay3 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = poverty_lowest20[[3]], risk_factor3 = pig_roam[[3]],
+                                   admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
+overlay3[[2]]
+
+# 4) proportion of HH with bad sanitation (1), pig distribution (DHS data; 1.01) and proportion of extensive households (1.1) 
+overlay4 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_populationDHS[[3]], risk_factor3 = pig_roam[[3]],
+                                   admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
+overlay4[[2]]
+
+# 5) FINAL RISK MAP; proportion of HH with bad sanitation (1), pig FAO (Robinson) distribution (1.01) and poorest 40% (1.1)  
+overlay5 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_populationFAO[[1]], risk_factor3 = poverty_lowest40[[3]],
+                                   admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
+overlay5[[2]]
+

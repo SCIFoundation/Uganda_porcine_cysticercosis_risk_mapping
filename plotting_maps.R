@@ -50,8 +50,8 @@ socio-economic quintile") # percentage of poor in the 40% percent poorest catego
   
 }
 
-
-# this function plots the Robinson et al. pig pop density map & stores plot object
+# ================================================================================ #
+# this function plots the Robinson et al. pig pop density map & stores plot object #
 
 plot_pig_density_map_func <- function(ppop, admin_processed) {
   
@@ -69,8 +69,8 @@ plot_pig_density_map_func <- function(ppop, admin_processed) {
 
 }
 
-
-# function for plotting raster layer in ggplot2
+#================================================#
+# function for plotting raster layer in ggplot2  #
 # # see: https://stackoverflow.com/questions/47116217/overlay-raster-layer-on-map-in-ggplot2-in-r 
 
 gplot_data <- function(x, maxpixels = 50000)  {
@@ -93,6 +93,7 @@ gplot_data <- function(x, maxpixels = 50000)  {
   dat
 }
 
+#============================================================================#
 # function for plotting overlay of risk factors (combined risk factor score) #
 
 plotting_overlays_func <- function(risk_factor1, risk_factor2, risk_factor3, admin_processed, admin, year){
@@ -104,13 +105,13 @@ plotting_overlays_func <- function(risk_factor1, risk_factor2, risk_factor3, adm
   
   colors <- c( "gray90", "gold", "steelblue1", "red", "springgreen", 'orange', 'plum1', "brown")
   
-  # combined metric with 3 risk factors (e.g. rf1 + rf2 + rf3)
+  # combined metric with 3 risk factors (e.g. rf1 + (rf2 * 1.01) + (rf3 * 1.1))
   
   # * A proportion of households bad sanitation high =1 is low = 0  
   # * B proportion of is high =1.1 is low =0 
   # * C proportion of poor 40% is high = 1.01 is low zero 
 
-  over <- risk_factor1 + risk_factor2 * 1.1 + risk_factor3 * 1.01
+  over <- risk_factor1 + risk_factor2 * 1.01 + risk_factor3 * 1.1
   over <- mask(over , admin)
   
   # plot in base r 
