@@ -43,7 +43,7 @@ shp_2011_processed <- processing_subnational_shp_func(shp = shp_2011) # process 
 # 1. toilet that a household use
 # 2. number of livestock owned by the households
 # 3. a couple of household charateristics
-My_cluter_data_2011 <- DHS2011_extraction_tocluster_func(data = DHS_2011_data, geo = geo_2011)
+My_cluster_data_2011 <- DHS_extraction_tocluster_func(data = DHS_2011_data, geo = geo_2011, year = 2011)
 
 #==========================================================================#
 #========  Spatial (spatial autocorrelation & kriging analysis ============#
@@ -53,13 +53,13 @@ My_cluter_data_2011 <- DHS2011_extraction_tocluster_func(data = DHS_2011_data, g
 
 # proportion of HH with pigs by cluster (0-1)
 hh_pigs_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
-                                                               clustered_data = My_cluter_data_2011, 
+                                                               clustered_data = My_cluster_data_2011, 
                                                                variable_interest = "pg_h")
 hh_pigs_cluster_plot
 
 # plot semi-variogram (spatial autocorrelation) of variable of interest (model vs data)
 spatial_pigHH <- process_plot_variogram_func(shp = shp_2011, 
-                                             clustered_data = My_cluter_data_2011, 
+                                             clustered_data = My_cluster_data_2011, 
                                              variable_interest = "pg_h")
 
 plot(spatial_pigHH[[4]]) # plot model fit to variogram data
@@ -76,7 +76,7 @@ kriged_pigHH[[2]] # plot predicted variable across map
 # as we do not compute the varigogram
 
 pig_flocksize_interpolated <- pig_flock_size_HH_interpolated_func(admin_processed = admin_2011_processed, 
-                                                      clustered_data = My_cluter_data_2011, 
+                                                      clustered_data = My_cluster_data_2011, 
                                                       spatial_object = spatial_pigHH,
                                                       variable_interest = "pg_hs")
 
@@ -108,12 +108,12 @@ pig_pop_density_FAOmap
 
 # A)
 free_range_pigs_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
-                                                               clustered_data = My_cluter_data_2011, 
+                                                               clustered_data = My_cluster_data_2011, 
                                                                variable_interest = "pg_2")
 free_range_pigs_cluster_plot
 # B)
 spatial_pigroam <- process_plot_variogram_func(shp = shp_2011, 
-                                             clustered_data = My_cluter_data_2011, 
+                                             clustered_data = My_cluster_data_2011, 
                                              variable_interest = "pg_2")
 plot(spatial_pigroam[[4]]) # plot model fit to variogram data
 # C)
@@ -130,12 +130,12 @@ pig_roam_processed <- spatially_process_variable_function(kriged = kriged_pigroa
 
 # A)
 sanitation_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
-                                                                       clustered_data = My_cluter_data_2011, 
+                                                                       clustered_data = My_cluster_data_2011, 
                                                                        variable_interest = "wc2")
 sanitation_cluster_plot
 # B)
 spatial_sanitation <- process_plot_variogram_func(shp = shp_2011, 
-                                               clustered_data = My_cluter_data_2011, 
+                                               clustered_data = My_cluster_data_2011, 
                                                variable_interest = "wc2")
 plot(spatial_sanitation[[4]]) # plot model fit to variogram data
 # C)
@@ -152,12 +152,12 @@ sanitation_processed <- spatially_process_variable_function(kriged = kriged_sani
 
 # A)
 sanitation2_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
-                                                                  clustered_data = My_cluter_data_2011, 
+                                                                  clustered_data = My_cluster_data_2011, 
                                                                   variable_interest = "wc1")
 sanitation2_cluster_plot
 # B)
 spatial_sanitation2 <- process_plot_variogram_func(shp = shp_2011, 
-                                                  clustered_data = My_cluter_data_2011, 
+                                                  clustered_data = My_cluster_data_2011, 
                                                   variable_interest = "wc1")
 plot(spatial_sanitation2[[4]]) # plot model fit to variogram data
 # C)
@@ -174,12 +174,12 @@ sanitation2_processed <- spatially_process_variable_function(kriged = kriged_san
 
 # A)
 poverty_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
-                                                                   clustered_data = My_cluter_data_2011, 
+                                                                   clustered_data = My_cluster_data_2011, 
                                                                    variable_interest = "w1")
 poverty_cluster_plot
 # B)
 spatial_poverty <- process_plot_variogram_func(shp = shp_2011, 
-                                                   clustered_data = My_cluter_data_2011, 
+                                                   clustered_data = My_cluster_data_2011, 
                                                    variable_interest = "w1")
 plot(spatial_poverty[[4]]) # plot model fit to variogram data
 # C)
@@ -196,12 +196,12 @@ poverty_processed <- spatially_process_variable_function(kriged = kriged_poverty
 
 # A)
 poverty2_cluster_plot <- plot_basic_distribution_variables_func(admin_processed = admin_2011_processed,
-                                                               clustered_data = My_cluter_data_2011, 
+                                                               clustered_data = My_cluster_data_2011, 
                                                                variable_interest = "w1&w2")
 poverty2_cluster_plot
 # B)
 spatial_poverty2 <- process_plot_variogram_func(shp = shp_2011, 
-                                               clustered_data = My_cluter_data_2011, 
+                                               clustered_data = My_cluster_data_2011, 
                                                variable_interest = "w1&w2")
 plot(spatial_poverty2[[4]]) # plot model fit to variogram data
 # C)
@@ -309,4 +309,153 @@ overlay4[[2]]
 overlay5 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_populationFAO[[1]], risk_factor3 = poverty_lowest40[[3]],
                                    admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
 overlay5[[2]]
+
+
+#====================================================================================================================#
+#                                       2001 PCC risk mapping                                                        #
+#====================================================================================================================#
+
+#===========================#
+# Load data & mapping files #
+DHS_2001_data <- read.spss('~/Uganda_porcine_cysticercosis_risk_mapping/data/DHS 2001/UGHR41FL.SAV', to.data.frame = T,use.value.labels = FALSE)
+geo_2001 <- readShapePoints("~/Uganda_porcine_cysticercosis_risk_mapping/data/DHS 2001/UGGE43FL.shp") 
+shp_2001 <- readShapePoly('~/Uganda_porcine_cysticercosis_risk_mapping/data/UGA_2012_60/sdr_subnational_boundaries.shp') # use 2011 boundries ??
+admin_2001 <- readShapePoly('~/Uganda_porcine_cysticercosis_risk_mapping/data/admin-gdam/UGA_adm1.shp') # source: https://gadm.org/download_country_v3.html
+
+#======================================#
+#==== Data cleaning & processing ======#
+
+admin_2001_processed <- processing_admin_data_func(admin = admin_2001) # process admin (district) spatial file
+shp_2001_processed <- processing_subnational_shp_func(shp = shp_2001) # process subnational boundaries shp file
+
+# data extraction & cleaning for 2001 DHS data variables of interest #
+# NOTE: no pig distribution data or no latrine only (wc1) data variables in 2001 DHS
+My_cluster_data_2001 <- DHS_extraction_tocluster_func(data = DHS_2001_data, geo = geo_2001, year = 2001) # 
+
+#======================================================================#
+#  Sanitation - percentage of household with low sanitation facilities #
+#  The first map includes household who have no facilities at all      #
+
+# A)
+sanitation_cluster_plot_2001 <- plot_basic_distribution_variables_func(admin_processed = admin_2001_processed,
+                                                                  clustered_data = My_cluster_data_2001, 
+                                                                  variable_interest = "wc2")
+sanitation_cluster_plot_2001
+# B)
+spatial_sanitation_2001 <- process_plot_variogram_func(shp = shp_2001, 
+                                                  clustered_data = My_cluster_data_2001, 
+                                                  variable_interest = "wc2")
+plot(spatial_sanitation_2001[[4]]) # plot model fit to variogram data
+# C)
+kriged_sanitation_2001 <- kriging_func(spatial_object = spatial_sanitation_2001, 
+                                  admin = admin_2001_processed, 
+                                  variable_interest = "wc2")
+kriged_sanitation_2001[[2]] # plot predicted variable across map
+# D)
+sanitation_processed_2001 <- spatially_process_variable_function(kriged = kriged_sanitation_2001[[1]]) # final object: process - gridded object + rasterize
+
+#=================================================================================##
+##         poverty level                                                          ##
+##  based on percentage of household in the poorest 20% (lowest socio-econ quintile)
+
+# A)
+poverty_cluster_plot_2001 <- plot_basic_distribution_variables_func(admin_processed = admin_2001_processed,
+                                                               clustered_data = My_cluster_data_2001, 
+                                                               variable_interest = "w1")
+poverty_cluster_plot_2001
+# B)
+spatial_poverty_2001 <- process_plot_variogram_func(shp = shp_2001, 
+                                               clustered_data = My_cluster_data_2001, 
+                                               variable_interest = "w1")
+plot(spatial_poverty_2001[[4]]) # plot model fit to variogram data
+# C)
+kriged_poverty_2001 <- kriging_func(spatial_object = spatial_poverty_2001, 
+                               admin = admin_2001_processed, 
+                               variable_interest = "w1")
+kriged_poverty_2001[[2]] # plot predicted variable across map
+# D)
+poverty_processed_2001 <- spatially_process_variable_function(kriged = kriged_poverty_2001[[1]]) # final object: process - gridded object + rasterize
+
+#=================================================================================##
+##         poverty level                                                          ##
+##  based on percentage of household in bottom two socio-economic quintiles       ##
+
+# A)
+poverty2_cluster_plot_2001 <- plot_basic_distribution_variables_func(admin_processed = admin_2001_processed,
+                                                                clustered_data = My_cluster_data_2001, 
+                                                                variable_interest = "w1&w2")
+poverty2_cluster_plot_2001
+# B)
+spatial_poverty2_2001 <- process_plot_variogram_func(shp = shp_2001, 
+                                                clustered_data = My_cluster_data_2001, 
+                                                variable_interest = "w1&w2")
+plot(spatial_poverty2_2001[[4]]) # plot model fit to variogram data
+# C)
+kriged_poverty2_2001 <- kriging_func(spatial_object = spatial_poverty2_2001, 
+                                admin = admin_2001_processed, 
+                                variable_interest = "w1&w2")
+kriged_poverty2_2001[[2]] # plot predicted variable across map
+# D)
+poverty2_processed_2001 <- spatially_process_variable_function(kriged = kriged_poverty2_2001[[1]]) # final object: process - gridded object + rasterize
+
+# we re-use the FAO (Robinson et al.) pig density map 
+pig_pop_density_FAOmap <- plot_pig_density_map_func(ppop = pig_pop, admin_processed = admin_2001_processed)
+pig_pop_density_FAOmap
+
+#===================================================================================================#
+# Investigating the distribution of the key variables to define meaningful breaks into high and low #
+
+# 3) based on FAO Robinson layer (cannot view historgram etc so use diff function)
+pig_populationFAO <- distribution_variables_definecutoff_func2(spatial_variable = pig_pop,
+                                                               cutoff_value = 1)
+plot(pig_populationFAO[[1]]) # cannot review histogram & summarise distribution
+plot(admin_2001_processed,add = T)
+
+# 5) poverty the 40% poorest
+poverty_lowest40_2001 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed_2001,
+                                                             cutoff_value = 0.3383) # 3rd quartile cut-off value 
+plot(poverty_lowest40_2001[[1]])
+poverty_lowest40_2001[[2]]
+plot(poverty_lowest40_2001[[3]])
+plot(admin_2001_processed,add = T)
+
+# 6) uncovered sanitation
+sanitation_2001 <- distribution_variables_definecutoff_func(spatial_variable = sanitation_processed_2001,
+                                                       cutoff_value = 0.384284) # 3rd quartile cut-off value 
+plot(sanitation_2001[[1]])
+sanitation_2001[[2]]
+plot(sanitation_2001[[3]])
+plot(admin_2001_processed,add = T)
+
+#===================================================================================================#
+#                            Overlays of risk factors                                               #
+
+# Combined risk factor scoring system (risk factor 1 + (risk factor 2 * 1.01)+ (risk factor 1 * 1.1)) :
+# 1. 0 = ABC low
+# 2. 1 = A high (yellow)
+# 3. 1.01 = B high (blue)
+# 4. 1.1 = C high (red)
+# 5. 2.01 = AB high (green)
+# 6. 2.1 = AC high (orange)
+# 7. 2.11 = BC high (purple)
+# 8. 3.11 = ABC high (brown)
+
+# 5) FINAL RISK MAP; proportion of HH with bad sanitation (1), pig FAO (Robinson) distribution (1.01) and poorest 40% (1.1)  
+overlay5 <- plotting_overlays_func(risk_factor1 = sanitation_2001[[3]], risk_factor2 = pig_populationFAO[[1]], risk_factor3 = poverty_lowest40_2001[[3]],
+                                   admin_processed = admin_2001_processed, admin = admin_2001, year = "2001") 
+overlay5[[2]]
+
+
+
+#====================================================================================================================#
+#                                       2006 PCC risk mapping                                                        #
+#====================================================================================================================#
+#===========================#
+# Load data & mapping files #
+# DHS_2006_data <- read.spss('~/Uganda_porcine_cysticercosis_risk_mapping/data/DHS 2001/UGHR41FL.SAV', to.data.frame = T,use.value.labels = FALSE)
+# geo_2001 <- readShapePoints("~/Uganda_porcine_cysticercosis_risk_mapping/data/DHS 2006/UGGE53FL.shp") # use 2006 boundaries for 2001 (unable to locate 2001 boundaries)
+# shp_2001 <- readShapePoly('~/Uganda_porcine_cysticercosis_risk_mapping/data/UGA_2012_60/sdr_subnational_boundaries.shp') # use 2011 boundries ??
+# admin_2001 <- readShapePoly('~/Uganda_porcine_cysticercosis_risk_mapping/data/admin-gdam/UGA_adm1.shp') # source: https://gadm.org/download_country_v3.html
+# 
+# districts_2006 <- readShapePoly("~/Uganda_porcine_cysticercosis_risk_mapping/data/District boundaries 2006/Stanford -2010/vg894mz3698.shp") # need this for 2006
 

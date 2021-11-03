@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <idinfo>
+    <descript>
+      <abstract>Boundaries of Uganda&amp;apos;s 80 Districts as of 2006.</abstract>
+      <purpose />
+      <supplinf />
+    </descript>
+    <useconst>Dataset is not for use in litigation. While efforts have been made to ensure that these data are accurate and reliable within the state of the art, WRI cannot assume liability for any damages, or misrepresentations, caused by any inaccuracies in the data, or as a result of the data to be used on a particular system. WRI makes no warranty, expressed or implied, nor does the fact of distribution constitute such a warranty.</useconst>
+    <datacred>UGANDA BUREAU OF STATISTICS (UBOS). 2006. Uganda Administrative Boundaries GIS Database. Kampala, Uganda: Government of Uganda, UBOS.</datacred>
+    <citation>
+      <citeinfo>
+        <title>District boundaries of Uganda - 2006</title>
+        <pubdate />
+        <othercit />
+        <origin>Uganda Bureau of Statistics</origin>
+        <onlink>http://app.databasin.org/app/pages/datasetPage.jsp?id=0ef9b6b4700942ef9adaecfb0b3857cd</onlink>
+        <pubinfo>
+          <publish />
+          <pubplace />
+        </pubinfo>
+      </citeinfo>
+    </citation>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Conservation Biology Institute (wendy@consbio.org)</cntper>
+          <cntorg>Uganda Bureau of Statistics</cntorg>
+        </cntperp>
+      </cntinfo>
+    </ptcontac>
+    <status>
+      <progress />
+      <update />
+    </status>
+    <timeperd>
+      <timeinfo>
+        <sngdate />
+        <current />
+      </timeinfo>
+    </timeperd>
+    <keywords>
+      <theme>
+        <themekey>Administrative boundaries</themekey>
+        <themekey>District boundaries</themekey>
+        <themekey>Africa</themekey>
+        <themekey>Afrique</themekey>
+        <themekt>Data Basin tags</themekt>
+      </theme>
+    </keywords>
+    <spdom>
+      <bounding>
+        <northbc>4.234076631097735</northbc>
+        <eastbc>35.000308036061</eastbc>
+        <southbc>-1.4787935058764283</southbc>
+        <westbc>29.572742361722398</westbc>
+      </bounding>
+    </spdom>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr />
+    </attracc>
+    <complete />
+    <lineage>
+      <procstep>
+        <procdesc>Consolidated Data Basin Info: Dataset moved. (M:\Working\Poverty_mapping_Uganda\GIS\GIS_data\Ug_Health\Ug_rural-safe-water-coverage_DWD2008_03Jan09)
+Dataset copied.
+Metadata imported. (C:\DOCUME~1\FLOREN~1.LAN\LOCALS~1\Temp\xml4B.tmp)
+Metadata imported. (C:\DOCUME~1\FLOREN~1.LAN\LOCALS~1\Temp\xml65.tmp)
+Dataset moved. (M:\Working\Poverty_mapping_Uganda\GIS\GIS_metadata\Ug_District-boundaries2006)</procdesc>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed>
+      <attr>
+        <attrlabl>FID</attrlabl>
+        <attalias>FID</attalias>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attalias>Shape</attalias>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>LEFT_FID</attrlabl>
+        <attalias>LEFT_FID</attalias>
+        <attrdef>Feature ID</attrdef>
+        <attrdomv />
+      </attr>
+      <attr>
+        <attrlabl>RIGHT_FID</attrlabl>
+        <attalias>RIGHT_FID</attalias>
+        <attrdef>Feature ID</attrdef>
+        <attrdomv />
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Data Basin</cntorg>
+          <cntper>Data Basin Administrator</cntper>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>136 SW Washington Ave, Suite 202</address>
+          <city>Corvallis</city>
+          <state>OR</state>
+          <postal>97333</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>541-757-0687</cntvoice>
+        <cntemail>databasin_admin@consbio.org</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>District boundaries of Uganda - 2006</resdesc>
+    <distliab>No warranty is made by Data Basin for use of this dataset.  No warranty is made by Data Basin regarding the accuracy, reliability, or completeness of this dataset. In no event shall Data Basin have any liability whatsoever for payment of any consequential, incidental, indirect, special, or tort damages of any kind, including, but not limited to, any loss of profits arising out of the use or reliance on the geographic or attribute data contained within this dataset or arising out of the delivery, installation, operation, or support by Data Basin.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>Shapefile Feature Class</formname>
+          <formvern>ArcGIS  10</formvern>
+          <formspec>Shapefile Feature Class</formspec>
+          <filedec>No compression applied</filedec>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>http://app.databasin.org/app/pages/datasetPage.jsp?id=0ef9b6b4700942ef9adaecfb0b3857cd</networkr>
+              </networka>
+            </computer>
+            <accinstr>Download from http://databasin.org</accinstr>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+      <ordering>Download from http://databasin.org</ordering>
+    </stdorder>
+    <techpreq>ESRI ArcGIS Desktop and supporting operating systems.</techpreq>
+  </distinfo>
+</metadata>
+

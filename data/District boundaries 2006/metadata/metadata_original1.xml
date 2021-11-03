@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<metadata xml:lang="en">
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<title>District boundaries of Uganda - 2006</title>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<onlink Sync="TRUE">\\WRICSAP029333\GIS\Working\Poverty_mapping_Uganda\GIS\GIS_metadata\Ug_District-boundaries2006\Ug_District-boundaries2006</onlink>
+				<origin>Uganda Bureau of Statistics</origin><pubdate>2006</pubdate><ftname Sync="TRUE">Ug_District-boundaries2006</ftname><othercit></othercit><pubinfo><publish /><pubplace /></pubinfo></citeinfo>
+		<citeinfo /><citeinfo /></citation>
+		<descript>
+			<abstract>Boundaries of Uganda's 80 Districts as of 2006.</abstract>
+			<supplinf></supplinf>
+			<langdata Sync="TRUE">en</langdata><purpose></purpose></descript>
+		<timeperd>
+			<timeinfo><sngdate></sngdate>
+				
+			<current /></timeinfo>
+			<current>publication date</current><timeinfo /><timeinfo /></timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>Continually</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">29.572742</westbc>
+				<eastbc Sync="TRUE">35.000308</eastbc>
+				<northbc Sync="TRUE">4.234077</northbc>
+				<southbc Sync="TRUE">-1.478794</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">29.572742</leftbc><rightbc Sync="TRUE">35.000308</rightbc><bottombc Sync="TRUE">-1.478794</bottombc><topbc Sync="TRUE">4.234077</topbc></lboundng><bounding /><bounding /></spdom>
+		<keywords>
+			
+			<place>
+				<placekey>Uganda</placekey>
+			</place>
+		<theme><themekey>Administrative boundaries</themekey><themekey>District boundaries</themekey><themekey>Africa</themekey><themekey>Afrique</themekey><themekt>Data Basin tags</themekt></theme></keywords>
+		<accconst>None</accconst>
+		<useconst>Dataset is not for use in litigation. While efforts have been made to ensure that these data are accurate and reliable within the state of the art, WRI cannot assume liability for any damages, or misrepresentations, caused by any inaccuracies in the data, or as a result of the data to be used on a particular system. WRI makes no warranty, expressed or implied, nor does the fact of distribution constitute such a warranty.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntperp><cntorg>Uganda Bureau of Statistics</cntorg><cntper>Conservation Biology Institute (johnb@consbio.org)</cntper></cntperp>
+			</cntinfo>
+		<cntinfo /><cntinfo /></ptcontac>
+		<datacred>UGANDA BUREAU OF STATISTICS (UBOS). 2006. Uganda Administrative Boundaries GIS Database. Kampala, Uganda: Government of Uganda, UBOS.</datacred>
+		<native Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000</native>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<lineage>
+			<procstep>
+				<procdesc Sync="TRUE">Dataset moved.</procdesc>
+				<srcused Sync="TRUE">M:\Working\Poverty_mapping_Uganda\GIS\GIS_data\Ug_Health\Ug_rural-safe-water-coverage_DWD2008_03Jan09</srcused>
+				<time Sync="TRUE">12274400</time>
+			</procstep>
+			<procstep>
+				<procdesc Sync="TRUE">Dataset copied.</procdesc>
+				<srcused Sync="TRUE" />
+				<procdate Sync="TRUE">20100218</procdate>
+				<proctime Sync="TRUE">11530700</proctime>
+			</procstep>
+			<procstep>
+				<procdesc Sync="TRUE">Metadata imported.</procdesc>
+				<srcused Sync="TRUE">C:\DOCUME~1\FLOREN~1.LAN\LOCALS~1\Temp\xml4B.tmp</srcused>
+				<procdate Sync="TRUE">20100323</procdate>
+				<proctime Sync="TRUE">11092600</proctime>
+			</procstep>
+			<procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\DOCUME~1\FLOREN~1.LAN\LOCALS~1\Temp\xml65.tmp</srcused><procdate Sync="TRUE">20100323</procdate><proctime Sync="TRUE">11252900</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset moved.</procdesc><srcused Sync="TRUE">M:\Working\Poverty_mapping_Uganda\GIS\GIS_metadata\Ug_District-boundaries2006</srcused><procdate Sync="TRUE">20100802</procdate><proctime Sync="TRUE">15143300</proctime></procstep><procstep><procdesc>Consolidated Data Basin Info: Dataset moved. (M:\Working\Poverty_mapping_Uganda\GIS\GIS_data\Ug_Health\Ug_rural-safe-water-coverage_DWD2008_03Jan09)&lt;br /&gt;Dataset copied.&lt;br /&gt;Metadata imported. (C:\DOCUME~1\FLOREN~1.LAN\LOCALS~1\Temp\xml4B.tmp)&lt;br /&gt;Metadata imported. (C:\DOCUME~1\FLOREN~1.LAN\LOCALS~1\Temp\xml65.tmp)&lt;br /&gt;Dataset moved. (M:\Working\Poverty_mapping_Uganda\GIS\GIS_metadata\Ug_District-boundaries2006)&lt;br /&gt;</procdesc></procstep></lineage>
+	<attracc><attraccr></attraccr></attracc><complete></complete></dataqual>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf>
+			<sdtsterm Name="Ug_District-boundaries2006">
+				<sdtstype Sync="TRUE">String</sdtstype>
+				<ptvctcnt Sync="TRUE">5767</ptvctcnt>
+			</sdtsterm>
+			<esriterm Name="Ug_District-boundaries2006"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polyline</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">5767</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<geograph>
+				<latres Sync="TRUE">0.000000</latres>
+				<longres Sync="TRUE">0.000000</longres>
+				<geogunit Sync="TRUE">Decimal degrees</geogunit>
+			</geograph>
+			<geodetic>
+				<horizdn Sync="TRUE">D_WGS_1984</horizdn>
+				<ellips Sync="TRUE">WGS_1984</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257224</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_WGS_1984</geogcsn></cordsysn></horizsys>
+	</spref>
+	<eainfo>
+		<detailed Name="Ug_District-boundaries2006">
+			<enttyp>
+				<enttypl Sync="TRUE">Ug_District-boundaries2006</enttypl>
+				<enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">5767</enttypc></enttyp>
+			<attr>
+				<attrlabl Sync="TRUE">FID</attrlabl>
+				<attrdef>Internal feature number.</attrdef>
+				<attrdefs Sync="TRUE">ESRI</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+				<attalias>FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr>
+				<attrlabl Sync="TRUE">Shape</attrlabl>
+				<attrdef Sync="TRUE">Feature geometry.</attrdef>
+				<attrdefs Sync="TRUE">ESRI</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Coordinates defining the features.</udom>
+				</attrdomv>
+				<attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr><attrlabl Sync="TRUE">LEFT_FID</attrlabl><attalias>LEFT_FID</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">9</attwidth><attrdef>Feature ID</attrdef><attrdomv /></attr><attr><attrlabl Sync="TRUE">RIGHT_FID</attrlabl><attalias>RIGHT_FID</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">9</attwidth><attrdef>Feature ID</attrdef><attrdomv /></attr><attr><attrlabl>Shape</attrlabl><attalias>Shape</attalias><attrdef>Feature geometry.</attrdef><attrdomv /></attr></detailed>
+	</eainfo>
+	<distinfo>
+		<resdesc Sync="TRUE">Downloadable Data</resdesc>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<transize Sync="TRUE">2.242</transize>
+					<dssize Sync="TRUE">2.242</dssize></digtinfo>
+			</digform>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20100802</metd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>World Resources Institute</cntorg>
+					<cntper>REQUIRED: The person responsible for the metadata information.</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>10 G Street NE</address>
+					<city>Washington</city>
+					<state>DC</state>
+					<postal>20002</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>+1-202-729-7600</cntvoice>
+			</cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><CreaDate>20110114</CreaDate><CreaTime>11580200</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20100802</SyncDate><SyncTime>15102700</SyncTime><ModDate>20100802</ModDate><ModTime>15113600</ModTime><ArcGISFormat>1.0</ArcGISFormat><ArcGISstyle>North American Profile of ISO19115 2003</ArcGISstyle><DataProperties><itemProps><itemLocation><linkage Sync="TRUE">file://\\WALRUS\G$\uploaded_2011\WRI\Uganda\Ug_District-boundaries2006\commondata\data0\Ug_District-boundaries2006</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation></itemProps><copyHistory><copy source="G:\WRI\Ug_District-boundaries2006\Ug_District-boundaries2006\Ug_District-boundaries2006" dest="\\WALRUS\G$\uploaded_2011\WRI\Uganda\Ug_District-boundaries2006\commondata\data0\Ug_District-boundaries2006" date="20110114" time="11580200" /></copyHistory></DataProperties></Esri><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000</envirDesc><dataLang><languageCode Sync="TRUE" value="en" /></dataLang><idCitation><resTitle Sync="TRUE">Ug_District-boundaries2006</resTitle><presForm><PresFormCd Sync="TRUE" value="005" /></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001" /></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">29.572742</westBL><eastBL Sync="TRUE">35.000308</eastBL><northBL Sync="TRUE">4.234077</northBL><southBL Sync="TRUE">-1.478794</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">29.572742</westBL><eastBL Sync="TRUE">35.000308</eastBL><northBL Sync="TRUE">4.234077</northBL><southBL Sync="TRUE">-1.478794</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en" /></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004" /></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005" /></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\WRICSAP029333\GIS\Working\Poverty_mapping_Uganda\GIS\GIS_metadata\Ug_District-boundaries2006\Ug_District-boundaries2006</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">2.242</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">GCS_WGS_1984</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001" /></topLvl><geometObjs Name="Ug_District-boundaries2006"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001" /></geoObjTyp><geoObjCnt Sync="TRUE">5767</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><mdDateSt Sync="TRUE">20100802</mdDateSt></metadata>

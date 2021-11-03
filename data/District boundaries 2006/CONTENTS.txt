@@ -1,0 +1,58 @@
+
+# District boundaries of Uganda - 2006
+
+
+## URL
+https://databasin.org/datasets/0ef9b6b4700942ef9adaecfb0b3857cd
+
+
+## Dataset Type
+ArcGIS
+
+
+## Credits
+Uganda Bureau of Statistics
+
+
+## Uploaded By
+[Conservation Biology Institute](https://databasin.org/people/consbio)
+
+
+## Description
+Boundaries of Uganda&#39;s 80 Districts as of 2006.
+
+
+## Use Constraints
+Dataset is not for use in litigation. While efforts have been made to ensure that these data are accurate and reliable within the state of the art, WRI cannot assume liability for any damages, or misrepresentations, caused by any inaccuracies in the data, or as a result of the data to be used on a particular system. WRI makes no warranty, expressed or implied, nor does the fact of distribution constitute such a warranty.
+
+
+### Original Metadata
+metadata/metadata1_original.xml
+
+
+### Data Basin Metadata
+metadata/metadata1.xml
+
+
+### Data Files
+data/./0000District boundaries of Uganda _ 2006.lyr
+data/commondata/data0/Ug_District-boundaries2006.sbn
+data/commondata/data0/Ug_District-boundaries2006.shp
+data/commondata/data0/Ug_District-boundaries2006.shp.xml
+data/commondata/data0/Ug_District-boundaries2006.sbx
+data/commondata/data0/Ug_District-boundaries2006.prj
+data/commondata/data0/Ug_District-boundaries2006.shx
+data/commondata/data0/Ug_District-boundaries2006.dbf
+data/esriinfo/item.pkinfo
+data/esriinfo/iteminfo.xml
+data/esriinfo/thumbnail/thumbnail.png
+
+
+
+### Attribute Data
+
+FID    FID    Internal feature number.    
+LEFT_FID    LEFT_FID    Feature ID    
+RIGHT_FID    RIGHT_FID    Feature ID    
+Shape    Shape    Feature geometry.    
+

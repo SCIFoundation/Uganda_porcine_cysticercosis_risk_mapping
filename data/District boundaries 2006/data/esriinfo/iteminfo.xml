@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ESRI_ItemInformation Culture='en-US'>
+<name>0ef9b6b4700942ef9adaecfb0b3857cd</name>
+<guid>86A3BB35-E10E-458A-9249-B64FD76825D2</guid>
+<catalogpath></catalogpath>
+<snippet></snippet>
+<description>Boundaries of Uganda&apos;s 80 Districts as of 2006.
+
+This dataset was uploaded to Data Basin and is available with additional information at: http://app.databasin.org/app/pages/datasetPage.jsp?id=0ef9b6b4700942ef9adaecfb0b3857cd</description>
+<summary></summary>
+<title>District boundaries of Uganda _ 2006</title>
+<tags></tags>
+<type>Layer Package</type>
+<typekeywords>
+<typekeyword>Shapefile Feature Class</typekeyword>
+<typekeyword>Layer Package</typekeyword>
+<typekeyword>Data</typekeyword>
+<typekeyword>ArcMap</typekeyword>
+<typekeyword>.lpk</typekeyword>
+</typekeywords>
+<thumbnail>thumbnail/thumbnail.png</thumbnail>
+<documentation></documentation>
+<url></url>
+<datalastmodifiedtime></datalastmodifiedtime>
+<extent>
+<xmin>29.5727423617224</xmin>
+<ymin>-1.47879350587643</ymin>
+<xmax>35.000308036061</xmax>
+<ymax>4.23407663109773</ymax>
+</extent>
+<spatialreference>WGS_1984_Web_Mercator_Auxiliary_Sphere</spatialreference>
+<accessinformation></accessinformation>
+</ESRI_ItemInformation>
