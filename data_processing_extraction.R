@@ -53,6 +53,21 @@ DHS_extraction_tocluster_func <- function(data, geo, year) {
     data$w5 <- ifelse(data$SH052 == '5', 1, 0) # (HV270: wealth quintile); if = 5 (richest or highest 20%) = 1
   } 
   
+  # 2006 DHS extraction #
+  if(year == 2006) {
+  data$Pg_num <- ifelse(data$HV246G > 95.5, NA, data$HV246G) # HG246G = Cs owns pigs: replace entries with >95 pigs with NA
+  data$Pg_h <- ifelse (data$Pg_num > 0, 1, 0) # if pig number > 0, specify 1 for datapoint (household with pigs)
+  data$Pg_2 <- ifelse (data$Pg_num == 1 | data$Pg_num == 2 & data$HV025 == 'Rural', 1, 0) # (HV025 = rural v urban) if pig number is 1 or 2 & classified as rural = 1
+  data$wc1 <- ifelse(data$HV205 == '31' | data$HV205 == '25' | data$HV205 == '24', 1, 0) # HV205 type of toilet facility; if either of (31 = no facility/bush/field; 25 = uncovered pit latrine with slab; 24 = uncovered pit latrine no slab) = 1
+  data$wc2 <- ifelse(data$HV205 == '31', 1, 0) # if no toilet facility/bush/field = 1 
+  data$w1 <- ifelse(data$HV270 == '1', 1, 0) # (HV270: wealth quintile); if = 1 (poorest or lowest 20%) = 1
+  data$w2 <- ifelse(data$HV270 == '2', 1, 0) # (HV270: wealth quintile); if = 2 (poorer or next to lowest 20%) = 1
+  data$w3 <- ifelse(data$HV270 == '3', 1, 0) # (HV270: wealth quintile); if = 3 (middle 20%) = 1
+  data$w4 <- ifelse(data$HV270 == '4', 1, 0) # (HV270: wealth quintile); if = 4 (richer or next to highest 20%) = 1
+  data$w5 <- ifelse(data$HV270 == '5', 1, 0) # (HV270: wealth quintile); if = 5 (richest or highest 20%) = 1
+  }
+  
+  
   # 2011 DHS extraction #
   if(year == 2011) {
     data$Pg_num <- ifelse(data$HV246G > 95.5, NA, data$HV246G) # HG246G = Cs owns pigs: replace entries with >95 pigs with NA
@@ -78,7 +93,7 @@ DHS_extraction_tocluster_func <- function(data, geo, year) {
   # Estimate aggregate/average number fo (variable of interest) within each DHS cluster #
   
   # pig variables #
-  if(year == 2011) {
+  if(year == 2011 || year == 2006) {
     temp <- aggregate(x = data$Pg_num, by = list(data$HV001), 'mean', na.rm = T) # aggregate/ average (mean) of pig number by cluster number (HV001)
     myPosVec = match(myClu$HV001, temp$Group.1 ) # match those clusters in temp (with an average pig number) to cluster in total list
     myClu$Pg_num = temp$x[myPosVec] # add average pig number for each cluster to full table
@@ -96,8 +111,9 @@ DHS_extraction_tocluster_func <- function(data, geo, year) {
     myClu$Pg_2 = temp$x[myPosVec] # average number of HH with 1 or 2 pigs in rural area (per cluster)
   }
   
+
   # sanitation variables #
-  if(year == 2011) {
+  if(year == 2011 || year == 2006) {
     temp<- aggregate(x = data$wc1, by = list(data$HV001), 'mean', na.rm = T) # aggregate/avg number reporting no facility/bush field or uncovered latrine w/ or /wo slab per cluster (calc mean)
     myPosVec = match(myClu$HV001,temp$Group.1 )
     myClu$wc1 = temp$x[myPosVec] # avg number reporting no facility/bush field or uncovered latrine w/ or /wo slab (per cluster)
