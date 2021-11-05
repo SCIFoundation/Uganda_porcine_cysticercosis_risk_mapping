@@ -306,9 +306,9 @@ overlay4 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 
 overlay4[[2]]
 
 # 5) FINAL RISK MAP; proportion of HH with bad sanitation (1), pig FAO (Robinson) distribution (1.01) and poorest 40% (1.1)  
-overlay5 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_populationFAO[[1]], risk_factor3 = poverty_lowest40[[3]],
+overlay5_2011 <- plotting_overlays_func(risk_factor1 = sanitation[[3]], risk_factor2 = pig_populationFAO[[1]], risk_factor3 = poverty_lowest40[[3]],
                                    admin_processed = admin_2011_processed, admin = admin_2011, year = "2011") 
-overlay5[[2]]
+overlay5_2011[[2]]
 
 
 #====================================================================================================================#
@@ -882,7 +882,7 @@ poverty2_processed_2016 <- spatially_process_variable_function(kriged = kriged_p
 # 1) livestock ownership distribution
 # for the final map we are using the 3rd quantile, i.e. the map shows were the 25% clusters with most households with pigs are. 
 livestock_ownership_2016 <- distribution_variables_definecutoff_func(spatial_variable = pig_pop_density_2016[[3]],
-                                                                     cutoff_value = 0.19)
+                                                                     cutoff_value = 0.34)
 plot(livestock_ownership_2016[[1]]) # histogram
 livestock_ownership_2016[[2]] # distribution properties
 plot(livestock_ownership_2016[[3]]) # plot high vs low
@@ -890,7 +890,7 @@ plot(admin_2016_processed,add = T)
 
 # 2) pig population based on DHS computation
 pig_populationDHS_2016 <- distribution_variables_definecutoff_func(spatial_variable = pig_pop_density_2016[[1]],
-                                                                   cutoff_value = 129.07)
+                                                                   cutoff_value = 1671.2)
 plot(pig_populationDHS_2016[[1]])
 pig_populationDHS_2016[[2]]
 plot(pig_populationDHS_2016[[3]])
@@ -904,7 +904,7 @@ plot(admin_2016_processed,add = T)
 
 # 4) pig extensive rural system 
 pig_roam_2016 <- distribution_variables_definecutoff_func(spatial_variable = pig_roam_processed_2016,
-                                                          cutoff_value = 0.07703) # cut-off indicated as 0.153 value (not 3rd quartile)
+                                                          cutoff_value = 0.06343) # cut-off indicated as 0.153 value (not 3rd quartile)
 plot(pig_roam_2016[[1]])
 pig_roam_2016[[2]]
 plot(pig_roam_2016[[3]])
@@ -912,7 +912,7 @@ plot(admin_2016_processed,add = T)
 
 # 5) poverty the 40% poorest
 poverty_lowest40_2016 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed_2016,
-                                                                  cutoff_value = 0.728294) # 3rd quartile cut-off value (0.666 in original)
+                                                                  cutoff_value = 0.6747814) # 3rd quartile cut-off value (0.666 in original)
 plot(poverty_lowest40_2016[[1]])
 poverty_lowest40_2016[[2]]
 plot(poverty_lowest40_2016[[3]])
@@ -920,7 +920,7 @@ plot(admin_2016_processed,add = T)
 
 # 6) poverty the 20% poorest
 poverty_lowest20_2016 <- distribution_variables_definecutoff_func(spatial_variable = poverty_processed_2016,
-                                                                  cutoff_value = 0.48963) # 3rd quartile cut-off value (0.438 used in original)
+                                                                  cutoff_value = 0.50827) # 3rd quartile cut-off value (0.438 used in original)
 plot(poverty_lowest20_2016[[1]])
 poverty_lowest20_2016[[2]]
 plot(poverty_lowest20_2016[[3]])
@@ -928,7 +928,7 @@ plot(admin_2016_processed,add = T)
 
 # 7) uncovered sanitation
 sanitation_2016 <- distribution_variables_definecutoff_func(spatial_variable = sanitation2_processed_2016,
-                                                            cutoff_value = 0.44090) # 3rd quartile cut-off value (0.408 used in original)
+                                                            cutoff_value = 0.8847) # 3rd quartile cut-off value (0.408 used in original)
 plot(sanitation_2016[[1]])
 sanitation_2016[[2]]
 plot(sanitation_2016[[3]])
@@ -945,3 +945,27 @@ overlay5_2016 <- plotting_overlays_func(risk_factor1 = sanitation_2016[[3]], ris
                                         risk_factor3 = poverty_lowest40_2016[[3]],
                                         admin_processed = admin_2016_processed, admin = admin_2016, year = "2016") 
 overlay5_2016[[2]]
+
+
+#================================================================================================#
+#             Plotting risk maps together & animation through time                               #
+#================================================================================================#
+
+# 1) plot all risk factor maps (2001 - 2016) #
+Riskmap_2001to2016 <- plot_all_risk_maps_func(riskmapdata1 = overlay5_2001[[3]], 
+                        riskmapdata2 = overlay5_2006[[3]], 
+                        riskmapdata3 = overlay5_2011[[3]], 
+                        riskmapdata4 = overlay5_2016[[3]],
+                        admin_processed = admin_2011_processed)
+Riskmap_2001to2016[[2]]
+#ggsave("risk_factormaps.tiff")
+savePlot_riskmaps(Plot = Riskmap_2001to2016[[2]]) # save a pdf in working dir. 
+
+# 2) Animate - takes a minute #
+Riskmap_animated_2001to2016 <- plot_riskmaps_animation_func(riskmapdata1 = overlay5_2001[[3]], 
+                                                   riskmapdata2 = overlay5_2006[[3]], 
+                                                   riskmapdata3 = overlay5_2011[[3]], 
+                                                   riskmapdata4 = overlay5_2016[[3]],
+                                                   admin_processed = admin_2011_processed)
+Riskmap_animated_2001to2016 # will save a animated gif in working dir. 
+

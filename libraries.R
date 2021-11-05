@@ -14,5 +14,6 @@ library(ggplot2)
 library(colorspace)
 library(ggthemes)
 library(cowplot)
+library(gganimate)
 
 

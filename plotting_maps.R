@@ -164,7 +164,108 @@ plotting_overlays_func <- function(risk_factor1, risk_factor2, risk_factor3, adm
     panel_border(remove = TRUE) +
     annotate("text", label = year, x = 29.75, y = 3.8, size = 7, colour = "black")
   
-  return(list(a, b))
+  return(list(a, b, riskfact_df))
 
 
+}
+
+#=================================================================#
+#     PLOT ALL 4 RISK MAPS TOGETHER FUNCTION                      #
+
+plot_all_risk_maps_func <- function(riskmapdata1, riskmapdata2, riskmapdata3, riskmapdata4, admin_processed){
+  
+  riskmapdata1$year <- as.factor(as.character("2001"))
+  riskmapdata2$year <- as.factor(as.character("2006"))
+  riskmapdata3$year <- as.factor(as.character("2011"))
+  riskmapdata4$year <- as.factor(as.character("2016"))
+  
+  risk_master_data <- rbind(riskmapdata1, riskmapdata2, riskmapdata3, riskmapdata4)
+  
+  value_rf <- c("grey90", "gold", "royalblue1", "red1", "springgreen", "darkorange1", "pink1", "tan4")
+  
+  Master_map <- 
+    ggplot() +
+    geom_tile(data = risk_master_data, 
+              aes(x = x, y = y, fill = risk_fact_bins)) +
+    geom_polygon(data=admin_processed, aes(x=long, y=lat, group=group), color="black", alpha=0) +
+    scale_fill_manual(name = "Risk Factors",
+                      values = value_rf, 
+                      na.value = NA, na.translate = FALSE,
+                      labels=c('all low','A = poor sanitation' , 
+                               'B = high pig density', 
+                               'C = high poverty', 
+                               'AB', 'AC', 'BC', 'ABC'))+
+    coord_equal() +
+    facet_wrap(~year) +
+    theme_void()+
+    theme(panel.grid = element_blank(), 
+          axis.title = element_blank(), 
+          axis.text = element_blank(), 
+          axis.ticks = element_blank(),
+          panel.background = element_blank(),
+          legend.title = element_text(face = "bold", size =14),
+          legend.text = element_text(face = "bold", size = 12),
+          legend.position="bottom",
+          plot.title = element_text(face = "bold", size= 18),
+          strip.text = element_text(size = 16)) +
+    panel_border(remove = TRUE) 
+  
+  return(list(risk_master_data, Master_map))
+  
+}
+
+# plotting animation of risk map through years #
+plot_riskmaps_animation_func <- function(riskmapdata1, riskmapdata2, riskmapdata3, riskmapdata4, admin_processed){
+
+  riskmapdata1$year <- as.numeric(2001)
+  riskmapdata2$year <- as.numeric(2006)
+  riskmapdata3$year <- as.numeric(2011)
+  riskmapdata4$year <- as.numeric(2016)
+  
+  risk_factor_master <- rbind(riskmapdata1, riskmapdata2, riskmapdata3, riskmapdata4)
+  
+  risk_factor_master$risk_fact_bins <- factor(risk_factor_master$risk_fact_bins, levels=c('all low','A' , 'B', 'C', 'AB', 'AC', 'BC', 'ABC'), ordered=TRUE)
+  
+  value_rf <- c("grey90", "gold", "royalblue1", "red1", "springgreen", "darkorange1", "pink1", "tan4")
+  
+  a <- ggplot() +
+  geom_tile(data = risk_factor_master, 
+            aes(x = x, y = y, fill = risk_fact_bins, group=interaction(risk_fact_bins,year))) +
+  geom_polygon(data=admin_processed, aes(x=long, y=lat, group=group), color="black", alpha=0) +
+  scale_fill_manual(name = "Risk Factors",
+                    values = value_rf, 
+                    na.value = NA, na.translate = FALSE,
+                    labels=c('all low','A = poor sanitation' , 'B = high pig density', 'C = high poverty', 'AB', 'AC', 'BC', 'ABC'))+
+  coord_equal() +
+  theme_bw()  +
+  theme(panel.grid = element_blank(), 
+        axis.title = element_blank(), 
+        axis.text = element_blank(), 
+        axis.ticks = element_blank(),
+        panel.background = element_blank(),
+        legend.title = element_text(face = "bold"),
+        plot.title = element_text(face = "bold"),
+        legend.position="bottom") +
+  panel_border(remove = TRUE) +
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {as.integer(frame_time)}') +
+  transition_time(year) +
+  ease_aes('linear')
+
+# Animate ggplot
+# https://stackoverflow.com/questions/57425622/speed-up-gganimate-rendering # speed up rendering
+# https://stackoverflow.com/questions/61399792/gganimatetransition-time-results-in-flying-polygons
+
+  b <- animate(a, renderer = gifski_renderer("risk_factor_map_animated_2001-2016.gif"), nframes=4, fps=0.3,
+        height = 6, width = 9, units = "in", res = 400) # save
+  
+  return(b)
+
+}
+
+# save PDF function #
+savePlot_riskmaps <- function(Plot) {
+  pdf("riskmaps.pdf", width=11.75, height=8.25)
+  print(Plot)
+  dev.off()
 }
