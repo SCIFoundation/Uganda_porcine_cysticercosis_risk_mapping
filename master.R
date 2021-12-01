@@ -215,6 +215,9 @@ poverty2_processed <- spatially_process_variable_function(kriged = kriged_povert
 #===================================================================================================#
 # Investigating the distribution of the key variables to define meaningful breaks into high and low #
 
+# TO DO: check these - especially as no risk factors in W of country (present in 2006 & re-appear 2016?)
+#        & more risk factors in NE corner in 2006 and 2016 (not so apparent in 2011)
+
 # 1) livestock ownership distribution
 # for the final map we are using the 3rd quantile, 
 # i.e. the map shows were the 25% clusters with most households with pigs are. 
@@ -629,6 +632,8 @@ poverty2_processed_2006 <- spatially_process_variable_function(kriged = kriged_p
 
 #===================================================================================================#
 # Investigating the distribution of the key variables to define meaningful breaks into high and low #
+
+# TO DO: check these - especially as substanital organge in NE and W of country (dissapears in 2011?)
 
 # 1) livestock ownership distribution
 # for the final map we are using the 3rd quantile, i.e. the map shows were the 25% clusters with most households with pigs are. 
