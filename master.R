@@ -254,6 +254,8 @@ plot(admin_2011_processed,add = T)
 # 5) poverty the 40% poorest
 poverty_lowest40 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed,
                                                      cutoff_value = 0.666333) # 3rd quartile cut-off value (0.666 in original)
+# poverty_lowest40 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed,
+#                                                              cutoff_value = 0.507027)
 plot(poverty_lowest40[[1]])
 poverty_lowest40[[2]]
 plot(poverty_lowest40[[3]])
@@ -270,6 +272,8 @@ plot(admin_2011_processed,add = T)
 # 7) uncovered sanitation
 sanitation <- distribution_variables_definecutoff_func(spatial_variable = sanitation2_processed,
                                                              cutoff_value = 0.40869) # 3rd quartile cut-off value (0.408 used in original)
+# sanitation <- distribution_variables_definecutoff_func(spatial_variable = sanitation2_processed,
+#                                                        cutoff_value = 0.35)
 plot(sanitation[[1]])
 sanitation[[2]]
 plot(sanitation[[3]])
@@ -669,6 +673,9 @@ plot(admin_2006_processed,add = T)
 # 5) poverty the 40% poorest
 poverty_lowest40_2006 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed_2006,
                                                              cutoff_value = 0.728294) # 3rd quartile cut-off value (0.666 in original)
+# poverty_lowest40_2006 <- distribution_variables_definecutoff_func(spatial_variable = poverty2_processed_2006,
+#                                                                   cutoff_value = 0.8) # 3rd quartile cut-off value (0.666 in original)
+
 plot(poverty_lowest40_2006[[1]])
 poverty_lowest40_2006[[2]]
 plot(poverty_lowest40_2006[[3]])
@@ -685,6 +692,9 @@ plot(admin_2006_processed,add = T)
 # 7) uncovered sanitation
 sanitation_2006 <- distribution_variables_definecutoff_func(spatial_variable = sanitation2_processed_2006,
                                                        cutoff_value = 0.44090) # 3rd quartile cut-off value (0.408 used in original)
+# sanitation_2006 <- distribution_variables_definecutoff_func(spatial_variable = sanitation2_processed_2006,
+#                                                             cutoff_value = 0.6) # 3rd quartile cut-off value (0.408 used in original)
+
 plot(sanitation_2006[[1]])
 sanitation_2006[[2]]
 plot(sanitation_2006[[3]])
